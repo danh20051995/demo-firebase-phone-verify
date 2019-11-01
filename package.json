@@ -1,7 +1,7 @@
 {
-  "name": "firebase-phone-authentication",
+  "name": "firebase-phone-verify",
   "version": "1.0.0",
-  "description": "Example firebase phone authentication",
+  "description": "Example firebase phone verify",
   "main": "app.js",
   "scripts": {
     "start": "nodemon --exec npm run dev",
@@ -9,18 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danh20051995/firebase-phone-authentication.git"
+    "url": "git+https://github.com/danh20051995/firebase-phone-verify.git"
   },
   "keywords": [
     "firebase",
-    "firebase-authentication"
+    "firebase-verify"
   ],
   "author": "danh.danh20051995@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/danh20051995/firebase-phone-authentication/issues"
+    "url": "https://github.com/danh20051995/firebase-phone-verify/issues"
   },
-  "homepage": "https://github.com/danh20051995/firebase-phone-authentication#readme",
+  "homepage": "https://github.com/danh20051995/firebase-phone-verify#readme",
   "devDependencies": {
     "nodemon": "^1.19.4"
   },

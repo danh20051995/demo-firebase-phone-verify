@@ -1,4 +1,4 @@
-# FIREBASE PHONE AUTHENTICATE EXAMPLE
+# FIREBASE PHONE VERIFY EXAMPLE
 ## Run command scripts below
 - Install dependencies
 ```
