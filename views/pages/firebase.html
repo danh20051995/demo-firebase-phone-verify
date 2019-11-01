@@ -1,0 +1,49 @@
+{% extends "../layouts/index.html" %}
+
+{% block mainclass %}d-flex{% endblock %}
+
+{% block style %}
+	<style>
+		.recaptcha > div {
+			display: none;
+		}
+	</style>
+{% endblock %}
+
+{% block main %}
+	<div class="col-6 offset-3 d-flex flex-row justify-content-center align-items-center">
+		<div class="col-6 recaptcha">
+			<input id="phoneNumber" type="text" value="+84971407794" placeholder="Phone number">
+			<button id="sendCode">Send Code</button>
+		</div>
+
+		<div class="col-6">
+			<input id="OTP" type="text" value="123456" placeholder="OTP code">
+			<button onclick="App.verifyOTP()">Verify OTP</button>
+		</div>
+	</div>
+{% endblock %}
+
+{% block script %}
+	<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+	<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+	<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+	<!-- Initialize Firebase -->
+	<script>
+		const firebaseConfig = {{ FIREBASE_CONFIG | dump | safe }}
+
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig)
+
+		const reCAPTCHA_site_key = '{{ RE_CAPTCHA_KEY }}'
+	</script>
+
+	<!-- reCAPTCHA -->
+	<script src="https://www.google.com/recaptcha/api.js?render={{ RE_CAPTCHA_KEY }}"></script>
+	<script src="/__/recaptcha/init.js"></script>
+{% endblock %}

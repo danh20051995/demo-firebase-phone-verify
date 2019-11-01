@@ -1,0 +1,6 @@
+{% if error and process.env.NODE_ENV !== 'production' %}
+  <div class="text-left">
+    <b>{{ error.message }}</b>
+    <pre>{{ error.stack }}</pre>
+  </div>
+{% endif %}
