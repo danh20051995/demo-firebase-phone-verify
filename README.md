@@ -17,7 +17,7 @@
   npm run server
 ```
 
-## Document
+## Documents
 - [reCAPTCHA](https://developers.google.com/recaptcha/intro)
 - [Firebase Authentication](https://firebase.google.com/docs/auth)
 - [Firebase Authentication Web|Phone](https://firebase.google.com/docs/auth/web/phone-auth)
