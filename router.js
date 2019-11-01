@@ -25,10 +25,8 @@ router.post('/sendOTP', async (req, res) => {
       message: 'Send OTP successfully.'
     })
   } catch (error) {
-    res.status(500)
-    return res.render('errors/500', {
-      error
-    })
+    res.status(400)
+    return res.render('errors/400', { error })
   }
 })
 
@@ -41,10 +39,8 @@ router.post('/verifyOTP', async (req, res) => {
       message: 'Phone verified.'
     })
   } catch (error) {
-    res.status(500)
-    return res.render('errors/500', {
-      error
-    })
+    res.status(400)
+    return res.render('errors/400', { error })
   }
 })
 
