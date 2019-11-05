@@ -45,11 +45,11 @@
 ;(function() {
   const app = {}
 
-  app.handlerRecaptchaToken = async recapchaToken => {
+  app.handlerRecaptchaToken = async recaptchaToken => {
     try {
       let response = await Service.sendOTP({
         phone: document.getElementById('phoneNumber').value,
-        recapchaToken
+        recaptchaToken
       })
 
       app.session = response.session

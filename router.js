@@ -18,7 +18,7 @@ router.get('/firebase', (req, res) => {
 /* sendOTP to phone number */
 router.post('/sendOTP', async (req, res) => {
   try {
-    let session = await firebase.sendOTP(req.body.phone, req.body.recapchaToken)
+    let session = await firebase.sendOTP(req.body.phone, req.body.recaptchaToken)
 
     return res.send({
       session,
