@@ -1,17 +1,20 @@
 var recaptchaWidgetId
 
-grecaptcha.ready(function() {
-  grecaptcha
-  	.execute(reCAPTCHA_site_key, { action: 'firebase' })
-  	.then(function(token) {
-     	console.log({ token })
-    })
-})
+// grecaptcha.ready(function() {
+//   grecaptcha
+//   	.execute(reCAPTCHA_site_key, { action: 'firebase' })
+//   	.then(function(token) {
+//      	console.log({ token })
+//     })
+// })
 
 // set-up an invisible recaptcha. 'sendCode` is button element id
 const recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sendCode', {
   size: 'invisible',
-  callback: App.handlerRecaptchaToken,
+  callback: async (token) => {
+    await App.handlerRecaptchaToken(token)
+    grecaptcha.reset(recaptchaWidgetId)
+  },
   ['expired-callback']() {
     grecaptcha.reset(recaptchaWidgetId)
   }
