@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Google reCAPTCHA</title>
+  <meta charset=utf-8>
+
+	<style type="text/css">
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+
+		div.container {
+			height: 100vh;
+			position: relative;
+			text-align: center;
+		}
+
+  	div.container button {
+			width: 600px;
+			height: 150px;
+			outline: none;
+			font-size: 50px;
+			box-shadow: none;
+			box-sizing: unset;
+			border-color: transparent;
+			border-radius: 15px;
+
+			position: absolute;
+			margin-top: 25%;
+			margin-right: 50%;
+			top: -75px;
+			right: -300px;
+  	}
+
+		/* hide badge */
+		.grecaptcha-badge {
+			visibility: collapse !important;  
+		}
+  </style>
+</head>
+
+<body>
+	<div class="container">
+	  <!-- <h1>Google reCAPTCHA</h1> -->
+	  <button id="g-recaptcha">Verify</button>
+	</div>
+
+	<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+	<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+	<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+
+	<script src="https://www.google.com/recaptcha/api.js?render=6LfTa8AUAAAAAKqc2YzUYm4hNrD4ECuNjKI0NR5y"></script>
+
+  <script>
+  	// FIREBASE
+  	const firebaseConfig = {
+	    apiKey: 'AIzaSyCPsToIeqLzpY24mWbsqQwk328Uztu_XyA',
+	    authDomain: 'maua-staging.firebaseapp.com',
+	    databaseURL: 'https://maua-staging.firebaseio.com',
+	    projectId: 'maua-staging',
+	    storageBucket: 'maua-staging.appspot.com',
+	    messagingSenderId: '526724798248',
+	    appId: '1:526724798248:web:c4184fb7c97f3952'
+	  }
+
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig)
+
+		var recaptchaWidgetId
+
+		// set-up an invisible recaptcha. 'sendCode` is button element id
+		const recaptchaVerifier = new firebase.auth.RecaptchaVerifier('g-recaptcha', {
+		  size: 'invisible',
+		  callback: token => {
+		  	history.pushState('', 'reCAPTCHA', location.origin + '?token=' + token)
+				grecaptcha.reset(recaptchaWidgetId)
+		  },
+		  ['expired-callback']() {
+		    grecaptcha.reset(recaptchaWidgetId)
+		  }
+		})
+
+		// render the rapchaVerifier. 
+		recaptchaVerifier.render().then(function(widgetId) {
+		  recaptchaWidgetId = widgetId
+	  	document.getElementById('g-recaptcha').click()
+		})
+  </script>
+</body>
+
+</html>
