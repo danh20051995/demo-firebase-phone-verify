@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'firebase-phone-auth',
-      script: './app.js',
+      script: './index.js',
       // watch: false,
       // instances: 'max',
       // exec_mode: 'cluster',

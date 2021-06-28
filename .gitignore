@@ -7,3 +7,8 @@
 .vscode
 .DS_Store
 .env
+
+/credentials/*
+
+!/**/.gitkeep
+!/**/README.md

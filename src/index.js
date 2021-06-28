@@ -1,11 +1,9 @@
-require('dotenv').config()
 const os = require('os')
 const path = require('path')
 const cors = require('cors')
 const boom = require('express-boom')
 const express = require('express')
 const nunjucks = require('nunjucks')
-const bodyParser = require('body-parser')
 
 const app = express()
 
@@ -15,14 +13,14 @@ app.use(cors())
 app.use(boom())
 
 // static files
-app.use('/__', express.static('__'))
+app.use('/__', express.static(path.join(__dirname, '..', '__')))
 
 // setup view-engine and views global, filter
 app.set('view engine', 'html')
 require('./view')(nunjucks.configure(path.join(__dirname, 'views'), {
   express: app,
-  autoescape: true,
   watch: true,
+  autoescape: true,
   tags: {
     blockStart: '{%',
     blockEnd: '%}',
@@ -34,13 +32,13 @@ require('./view')(nunjucks.configure(path.join(__dirname, 'views'), {
 }))
 
 // support parsing of application/json type post data
-app.use(bodyParser.json({
+app.use(express.json({
   limit: '5mb',
   type: 'application/json'
 }))
 
 // support parsing of application/x-www-form-urlencoded post data
-app.use(bodyParser.urlencoded({
+app.use(express.urlencoded({
   limit: '5mb',
   extended: true
 }))

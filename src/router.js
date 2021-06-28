@@ -1,15 +1,9 @@
-/**
-* File name: index.js
-* Created by Visual studio code
-* User: Danh Le / danh.le@dinovative.com
-* Date: 2019-01-18 17:38:59
-*/
 const firebase = require('./firebase')
 const { Router } = require('express')
 const router = Router()
 
 /* firebase page */
-router.get('/firebase', (req, res) => {
+router.get('*', (req, res) => {
   return res.render('pages/firebase', {
     page_title: 'Firebase example'
   })

@@ -1,16 +1,16 @@
 {
-  "name": "firebase-phone-verify",
+  "name": "demo-firebase-phone-verify",
   "version": "1.0.0",
   "description": "Example firebase phone verify",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "start": "nodemon --exec npm run dev",
-    "server": "node app.js",
-    "dev": "node --inspect=0.0.0.0:9229 app.js"
+    "server": "node index.js",
+    "dev": "node --inspect=0.0.0.0:9229 index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danh20051995/firebase-phone-verify.git"
+    "url": "git+https://github.com/danh20051995/demo-firebase-phone-verify.git"
   },
   "keywords": [
     "firebase",
@@ -19,19 +19,19 @@
   "author": "danh.danh20051995@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/danh20051995/firebase-phone-verify/issues"
+    "url": "https://github.com/danh20051995/demo-firebase-phone-verify/issues"
   },
-  "homepage": "https://github.com/danh20051995/firebase-phone-verify#readme",
-  "devDependencies": {
-    "nodemon": "^1.19.4"
-  },
+  "homepage": "https://github.com/danh20051995/demo-firebase-phone-verify#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "chokidar": "^3.5.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-boom": "^3.0.0",
-    "googleapis": "^44.0.0",
-    "nunjucks": "^3.2.0"
+    "googleapis": "^78.0.0",
+    "nunjucks": "^3.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
